@@ -2,25 +2,27 @@ package cn.gdut.jianzhi;
 
 public class Test8 {
     public TreeLinkNode GetNext(TreeLinkNode pNode){
-        // 如果有右子树，则直接指向右孩子,的最左子节点
+
+        // 如果右子树不为空，则右子树的最左孩子即为下一个
         if (pNode.right != null){
-            TreeLinkNode t = pNode.right;
-            while (t.left != null){
-                t = t.left;
+            TreeLinkNode tmp = pNode.right;
+            while (tmp.left != null){
+                tmp= tmp.left;
             }
-            return t;
+            return tmp;
         }
-        // 否则,向上找第一个左链表指向树包含该节点的祖先节点
+        // 右子树为空，
         else {
             while (pNode.next != null){
+                // 找到父节点
                 TreeLinkNode parent = pNode.next;
+                // 当前节点是父节点的左孩子
                 if (parent.left == pNode){
                     return parent;
                 }
-                pNode = pNode.next;
+                pNode = parent;
             }
         }
         return null;
-
     }
 }
