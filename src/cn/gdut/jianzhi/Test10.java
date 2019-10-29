@@ -10,20 +10,20 @@ public class Test10 {
      * @return
      */
 /*    private int Fibonacci(int n){
-        if (n == 0){
-            return 0;
-        }
-        if (n == 1){
-            return 1;
+        // 小于1 的情况
+        if (n <= 1){
+            return n;
         }
         int pre0 = 0;
         int pre1 = 1;
+        int fib = 0;
         for (int i = 2;i<=n;i++){
-            int c = pre0+ pre1;
+            fib = pre0 + pre1;
             pre0 = pre1;
-            pre1 = c;
+            pre1 = fib;
         }
-        return pre1;
+        return fib;
+
     }*/
 
     /**
@@ -33,21 +33,15 @@ public class Test10 {
      * @return
      */
     private int Fibonacci(int n){
-        // 处理0和1
-        if (n == 0){
-            return 0;
+        if (n<=1){
+            return n;
         }
-        if (n == 1){
-            return 1;
-        }
-        // 动态数组
-        int [] dp = new int [n+1];
-        // 初始赋值
+        // dp数组
+        int [] dp = new int[n+1];
         dp[0] = 0;
         dp[1] = 1;
-        // 求解
-        for (int i = 2; i <= n;i++){
-            dp[i] = dp[i-1]+dp[i-2];
+        for (int i = 2;i<=n;i++){
+            dp[i] = dp[i-1] + dp[i-2];
         }
         return dp[n];
     }
