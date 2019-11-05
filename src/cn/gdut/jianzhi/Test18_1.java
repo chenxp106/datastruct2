@@ -9,31 +9,26 @@ public class Test18_1 {
      * @return
      */
     public ListNode deleteNode(ListNode head, ListNode tobeDelete){
-        // 末尾有节点并且head不是toDelete节点
-        if (tobeDelete.next != null ){
+        // 如果不是最后一个节点
+        if (tobeDelete.next != null){
             tobeDelete.val = tobeDelete.next.val;
             tobeDelete.next = tobeDelete.next.next;
         }
+        // 否则，
         else {
-            // 只有一个节点
+            // 只有一个节点，即头节点
             if (head == tobeDelete){
                 head = null;
             }
+            // 在最后一个节点，需要遍历到那个节点再将其删除
             else {
-                //如果toDelete是末尾节点。需要找到最后一个节点再删
-                ListNode tmp = head;
-                if (tobeDelete.next == null){
-                    while (tmp.next != tobeDelete){
-                        tmp = tmp.next;
-                    }
-                    tmp.next = null;
+                ListNode cur = head;
+                while (cur.next != tobeDelete){
+                    cur = cur.next;
                 }
-
+                cur.next = null;
             }
-
         }
-
-        // 返回头结点
         return head;
     }
 }
