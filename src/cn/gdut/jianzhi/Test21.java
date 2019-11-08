@@ -3,41 +3,37 @@ package cn.gdut.jianzhi;
 /**
  * 将奇数放到偶数前面
  * 统计奇数的个数，然后拷贝数组。
- * 依次判断奇偶。空间复杂度为O(1)，时间复杂度为O（n)
+ * 依次判断奇偶。空间复杂度为O(n)，时间复杂度为O（n)
  */
 public class Test21 {
     public void reOrderArray(int [] array){
-        // 奇数的个数
-        int olddCnt = 0;
+        // 先统计奇数的个数
+        int oddCnt = 0;
         for (int x : array){
             if (isOdd(x)){
-                olddCnt++;
+                oddCnt++;
             }
         }
-        //数组拷贝
         int [] copy = array.clone();
-        int i = 0, j = olddCnt;
-        for (int num : copy){
-            if (num % 2 == 1){
-                array[i++] = num;
+        // 奇数起始位和偶数起始位
+        int i = 0;
+        int j = oddCnt;
+        for (int x : copy){
+            if (isOdd(x)){
+                array[i++] = x;
             }
             else {
-                array[j++] = num;
+                array[j++] = x;
             }
         }
+
     }
 
-    /**
-     * 是否为奇数
-     * @param x
-     * @return
-     */
     private boolean isOdd(int x){
-        if (x % 2 == 0){
-            return false;
-        }
-        return true;
+        return  x % 2 == 1 ? true : false;
     }
+
+
 
     public static void main(String[] args) {
         Test21 test21 = new Test21();
