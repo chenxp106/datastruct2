@@ -11,25 +11,24 @@ package cn.gdut.jianzhi;
  */
 public class Test26 {
     public boolean HasSubtree(TreeNode root1, TreeNode root2){
-        if (root2 == null || root1 == null){
+        if (root1 == null || root2 == null){
             return false;
         }
-        return isSub(root1, root2) || HasSubtree(root1.left, root2) || HasSubtree(root1.right, root2);
+        return isSub(root1,root2) || HasSubtree(root1.left, root2) || HasSubtree(root1.right, root2);
     }
 
     private boolean isSub(TreeNode root1, TreeNode root2){
-        // 如果root2为空，说明匹配成功
         if (root2 == null){
             return true;
         }
-        // 如果root1为空
-        if (root1 == null ){
+        if (root1 == null){
             return false;
         }
-        // 如果值不相等
-        if (root1.val != root2.val ){
+        if (root1.val != root2.val){
             return false;
         }
-        return isSub(root1.left,root2.left) && isSub(root1.right , root2.right);
+        return isSub(root1.left, root2.left) && isSub(root1.right, root2.right);
     }
+
+
 }
