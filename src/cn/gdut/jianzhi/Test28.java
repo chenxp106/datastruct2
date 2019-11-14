@@ -9,20 +9,25 @@ public class Test28 {
         if (pRoot == null){
             return true;
         }
-        return isSymme(pRoot.left, pRoot.right);
+        return isSys(pRoot.left, pRoot.right);
     }
 
-    private boolean isSymme(TreeNode root1, TreeNode root2){
+    private boolean isSys(TreeNode root1,TreeNode root2){
+        //如果两个都为空，则是对称的
         if (root1 == null && root2 == null){
             return true;
         }
+        //如果有一个为空
         if (root1 == null || root2 == null){
             return false;
         }
+        //值要相等
         if (root1.val != root2.val){
             return false;
         }
-        return isSymme(root1.left,root2.right) && isSymme(root1.right, root2.left);
-
+        // 递归.即一个左边要等于右边。右边的值要等于左边
+        return isSys(root1.left, root2.right) && isSys(root1.right, root2.left);
     }
+
+
 }

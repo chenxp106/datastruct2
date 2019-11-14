@@ -9,22 +9,19 @@ public class Test27 {
         if (root == null){
             return;
         }
-        reverser(root);
-
+        reverse(root);
     }
 
-    /**
-     * 递归交换
-     * @param root
-     * @return
-     */
-    private TreeNode reverser(TreeNode root){
+    private TreeNode reverse(TreeNode root){
+        //递归出口
         if (root == null){
             return null;
         }
         TreeNode tmp = root.left;
-        root.left = reverser(root.right);
-        root.right = reverser(tmp);
+        root.left = reverse(root.right);
+        root.right = reverse(tmp);
         return root;
     }
+
+
 }
