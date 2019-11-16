@@ -7,9 +7,9 @@ public class Test30 {
     Stack<Integer> stack = new Stack<>();
     Stack<Integer> minStack = new Stack<>();
 
+    // 同时进栈
     public void push(int node){
         stack.push(node);
-        // 判断是否更小
         minStack.push(minStack.isEmpty() ? node : Math.min(node, minStack.peek()));
     }
 
@@ -17,12 +17,12 @@ public class Test30 {
      * 同时出栈
      */
     public void pop(){
-        stack.pop();
         minStack.pop();
+        stack.pop();
     }
 
     public int top(){
-        return stack.peek();
+        return stack.pop();
     }
 
     public int min(){
