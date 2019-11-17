@@ -14,19 +14,20 @@ public class Test32_1 {
         if (root == null){
             return result;
         }
+        // 定义一个队列
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
         while (!queue.isEmpty()){
             // 出队列
-            TreeNode cur = queue.poll();
+            TreeNode node = queue.poll();
             // 访问它
-            result.add(cur.val);
-            if (cur.left != null){
-                // 进队列
-                queue.add(cur.left);
+            result.add(node.val);
+            // 将左右子树放入队列中
+            if (node.left != null){
+                queue.add(node.left);
             }
-            if (cur.right != null){
-                queue.add(cur.right);
+            if (node.right != null){
+                queue.add(node.right);
             }
         }
         return result;

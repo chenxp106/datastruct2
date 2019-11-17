@@ -5,15 +5,15 @@ import java.util.Stack;
 public class Test31 {
 
     public boolean IsPopOrder(int [] pushA, int [] popA){
-        // 定义一个栈 ，模拟进栈操作
+        int n = pushA.length;
+        // 定义一个栈，模拟进栈操作
         Stack<Integer> stack = new Stack<>();
-        int n = popA.length;
         int k = 0;
-        for (int i = 0 ;i < n;i++){
-            // 进栈
+        // 依次进栈
+        for (int i = 0;i < n;i++){
             stack.push(pushA[i]);
-            // 当出栈的数与栈顶元素相同时，出栈
-            while (!stack.isEmpty() && k <= n && stack.peek() == popA[k] ){
+            // 对比出栈,栈不为空，并且值相等，则出栈
+            while (!stack.isEmpty() && popA[k] == stack.peek() ){
                 stack.pop();
                 k++;
             }
