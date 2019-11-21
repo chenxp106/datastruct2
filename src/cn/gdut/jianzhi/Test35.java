@@ -6,7 +6,7 @@ package cn.gdut.jianzhi;
  **/
 public class Test35 {
     public RandomListNode Clone(RandomListNode pHead){
-        if (pHead == null){
+        /*if (pHead == null){
             return null;
         }
         // 复制节点
@@ -38,7 +38,39 @@ public class Test35 {
             // 将
             cur = next;
         }
-        return pColne;
+        return pColne;*/
 
+        if (pHead == null){
+            return null;
+        }
+
+        // 插入节点
+        RandomListNode cur = pHead;
+        while (cur != null){
+            RandomListNode node = new RandomListNode(cur.label);
+            node.next = cur.next;
+            cur.next = node;
+            cur = node.next;
+        }
+
+        // 连接随机指针
+        cur = pHead;
+        while (cur != null){
+
+            if (cur.random != null){
+                cur.next.random = cur.random.next;
+            }
+            cur = cur.next.next;
+        }
+
+        // 拆分链表
+        RandomListNode p = pHead.next;
+        cur = pHead;
+        while (cur.next != null){
+            RandomListNode next = cur.next;
+            cur.next = next.next;
+            cur = next;
+        }
+        return p;
     }
 }
