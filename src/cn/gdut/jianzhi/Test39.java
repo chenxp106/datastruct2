@@ -10,17 +10,19 @@ public class Test39 {
         if (array == null || array.length == 0){
             return 0;
         }
-        // 个数
+        // 标记第一个数
         int cnt = 1;
-        // 当前的众数
         int cur = array[0];
-        for (int i = 1;i < array.length;i++){
+        int n = array.length;
+        for (int i = 1 ;i < n;i++){
+            // 小于等于0
             if (cnt <= 0){
+                // 重新标记
                 cur = array[i];
                 cnt = 1;
             }
-            // 判断当前值是否相等
-            if (array[i] == cur){
+            //
+            if (array[i] == array[i-1]){
                 cnt++;
             }
             else {
@@ -28,12 +30,13 @@ public class Test39 {
             }
         }
         cnt=0;
+        // 统计个数
         for (int x : array){
             if (x == cur){
                 cnt++;
             }
         }
-        if (cnt <= array.length / 2){
+        if (cnt <= n / 2){
             return 0;
         }
         return cur;
