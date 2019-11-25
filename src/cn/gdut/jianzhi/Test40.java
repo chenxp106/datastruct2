@@ -19,61 +19,63 @@ public class Test40 {
      */
     public ArrayList<Integer> GetLeastNumbers_solution(int [] input, int k){
         int n = input.length;
-        ArrayList<Integer> res = new ArrayList<>();
-        if (k > n || k <= 0){
-            return res;
-        }
-
+        ArrayList<Integer> res =  new ArrayList<>();
         if (input == null || n == 0){
             return res;
         }
-
-        findK(input, 0, n-1,k-1);
-        for (int i = 0; i < k;i++){
+        if (k > n || k <=0){
+            return res;
+        }
+        // 找到k个排序好的k个数
+        findK(input, 0, n-1, k-1);
+        // 将前k个数输出
+        for (int i = 0;i < k ;i++){
             res.add(input[i]);
         }
         return res;
     }
 
-    private void findK(int [] intput, int low, int high , int k){
-        int i = partition(intput, low, high);
-        if (i == k){
+    private void findK(int [] input, int low, int high, int k){
+        // 返回的结果表示当前的k，前半部分比k小，后半部分比k大。
+        int value = partion(input, low, high);
+        if (value == k){
             return;
         }
-        // 右边找
-        if (i < k){
-            findK(intput, i+1, high,k);
+        // 在前半段找
+        if (value > k ){
+            findK(input, low, value-1, k);
         }
+        // 在后半段找
         else {
-            findK(intput, low,i-1,k);
+            findK(input, value+1, high, k);
         }
     }
 
-
     /**
-     * 一次排序排序
+     * 一次快速排序
      * @param input
      * @param low
      * @param high
      * @return
      */
-    private int partition(int [] input, int low ,int high){
+    private int partion(int [] input, int low, int high){
         int i = low;
-        int temp = input[i];
         int j = high;
+        int tmp = input[i];
         while (i != j){
-            while (i < j && input[j] >= temp){
+            while ( i < j && tmp <= input[j]){
                 j--;
             }
             input[i] = input[j];
-            while (i < j && temp >= input[i]){
+            while (i < j && tmp >= input[i]){
                 i++;
             }
             input[j] = input[i];
         }
-        input[i] = temp;
+        input[i] = tmp;
         return i;
     }
+
 
     public static void main(String[] args) {
         Test40 test40 = new Test40();
