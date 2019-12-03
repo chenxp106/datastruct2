@@ -28,7 +28,9 @@ public class Test48 {
         }
         maxLen = Math.max(maxLen ,curLen);
         return maxLen;*/
-        Map<Character, Integer> map = new HashMap<>();
+
+
+        /*Map<Character, Integer> map = new HashMap<>();
         int max = 0;
         // 记录当前字符前面出现的位置
         int pre = -1;
@@ -48,6 +50,28 @@ public class Test48 {
             map.put(c, i);
         }
 
+        return max;*/
+
+        // 定义一个map，用于存储当前字符前一个出现的位置
+        Map<Character,Integer> map = new HashMap<>();
+        // 定义最大长度
+        int max = 0;
+        // 定义前一个位置
+        int pre = -1;
+        for (int i = 0; i < str.length();i++){
+            // 当前字符
+            char c = str.charAt(i);
+            Integer index = map.get(c);
+            // 之前已经出现了这个字符
+            if (index != null){
+                // 更新当前子pre为这个
+                pre = Math.max(index, pre);
+            }
+            // 计算当前的最大值
+            max = Math.max(max, i - pre);
+            // 将当前字符放入map中
+            map.put(c,i);
+        }
         return max;
 
     }
