@@ -6,11 +6,11 @@ package cn.gdut.jianzhi;
  **/
 public class Test53 {
     public int GetNumberofK(int [] array, int k){
-        // 分别统计k和k+1在数组中的下标
+        // k起始位置
         int left = findIndex(array, k);
-        int right = findIndex(array, k);
+        // 终止位置
+        int right = findIndex(array, k+1);
         return right - left;
-
     }
     /**
      * 1,2,3,3,3,3,4,6
@@ -33,7 +33,7 @@ public class Test53 {
      *      返回l
      */
 
-    private int findIndex(int [] array, int k){
+/*    private int findIndex(int [] array, int k){
         int l = 0;
         int h = array.length-1;
         while (l < h){
@@ -43,6 +43,26 @@ public class Test53 {
             }
             else {
                 h = mind;
+            }
+        }
+        return l;
+    }*/
+
+    /**
+     * 用二分查找，找到第一个数
+     * @param array
+     * @param k
+     * @return
+     */
+    private int findIndex(int [] array, int k){
+        int l = 0, h = array.length;
+        while (l < h){
+            int mid = l + (h - l) / 2;
+            if (k > array[mid]){
+                l = mid + 1;
+            }
+            else {
+                h = mid;
             }
         }
         return l;
