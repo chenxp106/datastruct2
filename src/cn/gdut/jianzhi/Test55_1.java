@@ -13,8 +13,9 @@ public class Test55_1 {
         if (p == null){
             return 0;
         }
-        int left = deep(p.left)+1;
-        int right = deep(p.right)+1;
-        return Math.max(left,right);
+        // 分别求出左右子树的高度
+        int left = deep(p.left);
+        int right = deep(p.right);
+        return Math.max(left, right) + 1;
     }
 }
