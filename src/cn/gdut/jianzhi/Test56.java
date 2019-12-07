@@ -12,7 +12,7 @@ public class Test56 {
         }
         diff &= -diff;
         for (int num : array){
-            if ((num & diff) == 0){
+            if ((num & diff )== 0){
                 num1[0] ^= num;
             }
             else {
@@ -23,7 +23,7 @@ public class Test56 {
 
     public static void main(String[] args) {
         Test56 test56 = new Test56();
-        int []a = {1,1,2,3};
+        int []a = {2,1,6,1,2,3};
         int [] b = {1};
         int [] c = {1};
         test56.FindNumsAppearOnce(a,b,c);
