@@ -8,7 +8,7 @@ import java.util.ArrayList;
  **/
 public class Test57_1 {
     public ArrayList<Integer> FindNumbersWithSum(int [] array, int sum){
-        ArrayList<Integer> res = new ArrayList<>();
+        /*ArrayList<Integer> res = new ArrayList<>();
         if (array == null || array.length == 0){
             return res;
         }
@@ -46,7 +46,29 @@ public class Test57_1 {
                 i++;
             }
         }
-        return res;
+        return res;*/
+
+        ArrayList<Integer> ret = new ArrayList<>();
+        if (array == null || array.length == 0){
+            return ret;
+        }
+        int i = 0, j = array.length - 1;
+        while (i < j){
+            int tmp = array[i] + array[j];
+            if (tmp > sum){
+                j--;
+            }
+            else if (tmp < sum){
+                i++;
+            }
+            // 相等
+            else {
+                ret.add(array[i]);
+                ret.add(array[j]);
+                return ret;
+            }
+        }
+        return ret;
     }
 
     public static void main(String[] args) {

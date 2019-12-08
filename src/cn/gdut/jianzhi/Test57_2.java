@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Test57_2 {
 
     public ArrayList<ArrayList<Integer>> FindContinuousSequence(int sum){
-        ArrayList<ArrayList<Integer>> ret = new ArrayList<>();
+        /*ArrayList<ArrayList<Integer>> ret = new ArrayList<>();
         // 初始化，从前两个数开始
         int start = 1, end = 2;
         // 当前和为3
@@ -40,6 +40,42 @@ public class Test57_2 {
                 curSum += end;
             }
         }
+        return ret;*/
+        ArrayList<ArrayList<Integer>> ret = new ArrayList<>();
+        // 定义开始位置
+        int start = 1, end = 2;
+        int curSum = 3;
+        while (end < sum){
+            if (curSum > sum){
+                curSum = curSum - start;
+                start++;
+            }
+            else if (curSum < sum){
+                end++;
+                curSum += end;
+            }
+            // 相等情况
+            else {
+                // 将中间的数加上
+                ArrayList<Integer> list = new ArrayList<>();
+                for (int i = start; i <= end ;i++){
+                    list.add(i);
+                }
+                ret.add(list);
+                // 同时将窗口后移一个.这个有顺序
+                curSum -= start;
+                start++;
+                end++;
+                curSum += end;
+            }
+
+        }
         return ret;
+
+    }
+
+    public static void main(String[] args) {
+        Test57_2 test57_2 = new Test57_2();
+        System.out.println(test57_2.FindContinuousSequence(4));
     }
 }
