@@ -9,14 +9,14 @@ public class Test58_2 {
         if (str == null || str.length() == 0){
             return "";
         }
-        int k = str.length();
+        int len = str.length();
         char [] chars = str.toCharArray();
         reverse(chars, 0, n-1);
-        reverse(chars,n,k-1);
-        reverse(chars, 0, k-1);
+        reverse(chars, n, len-1);
+        reverse(chars, 0, len-1);
         return new String(chars);
-
     }
+
     private void reverse(char [] chars, int i, int j){
         while (i < j){
             char tmp = chars[i];
