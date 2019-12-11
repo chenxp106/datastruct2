@@ -10,7 +10,7 @@ import java.util.Queue;
  **/
 public class Test59 {
     public ArrayList<Integer> maxInWindows(int [] num, int size){
-        ArrayList<Integer> ret = new ArrayList<>();
+        /*ArrayList<Integer> ret = new ArrayList<>();
         if (num == null || num.length == 0 || size <= 0 || size > num.length){
             return ret;
         }
@@ -25,6 +25,25 @@ public class Test59 {
         int n = num.length;
         // 后面的数维护好大根堆
         for (int i = size, j = 0; i < n; i++ ,j++){
+            heap.remove(num[j]);
+            heap.add(num[i]);
+            ret.add(heap.peek());
+        }
+        return ret;*/
+        ArrayList<Integer> ret = new ArrayList<>();
+        if (num == null || num.length == 0 || size <= 0 || size > num.length){
+            return ret;
+        }
+        // 建立一个大根堆
+        Queue<Integer> heap =new PriorityQueue<Integer>((o1,o2) -> o2 - o1);
+        // 将前面size个放入堆中
+        for (int i = 0; i < size; i++){
+            heap.add(num[i]);
+        }
+        ret.add(heap.peek());
+        // 将剩下的放到对堆中
+        for (int i = size, j = 0; i < num.length; i++, j++){
+            // 先取出一个元素
             heap.remove(num[j]);
             heap.add(num[i]);
             ret.add(heap.peek());
