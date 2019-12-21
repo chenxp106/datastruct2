@@ -1,4 +1,4 @@
-package cn.gdut.zuo;
+package cn.gdut.zuo.class1;
 
 /**
  * @Desctiption TODO
