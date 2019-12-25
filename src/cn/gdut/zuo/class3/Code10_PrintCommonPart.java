@@ -6,7 +6,7 @@ import cn.gdut.zuo.utils.Node;
  * @Desctiption d0
  * @Date 2019/12/24/024
  **/
-public class Code10_PrinyCommonPart {
+public class Code10_PrintCommonPart {
 
     public static void printCommonPart(Node head1, Node head2){
         while (head1 != null && head2 != null){
