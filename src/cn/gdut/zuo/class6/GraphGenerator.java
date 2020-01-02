@@ -5,6 +5,14 @@ package cn.gdut.zuo.class6;
  * @Date 2019/12/31/031
  **/
 public class GraphGenerator {
+    /**
+     * 第一个表示权重，from， to
+     * matrix [[3,1,2]
+     *         [2,2,3]
+     *         [4,2,5]]
+     * @param matrix
+     * @return
+     */
     public static Graph createGraph(Integer [][] matrix){
         Graph graph = new Graph();
         for (int i = 0; i < matrix.length ; i++){

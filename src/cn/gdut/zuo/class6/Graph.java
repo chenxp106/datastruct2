@@ -8,6 +8,7 @@ import java.util.HashSet;
  * @Date 2019/12/31/031
  **/
 public class Graph {
+    // 编号：节点
     public HashMap<Integer, Node> nodes;
     public HashSet<Edge> edges;
     public Graph(){
