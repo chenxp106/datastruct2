@@ -19,6 +19,7 @@ public class Test23 {
         while (fast != slow) {
             fast = fast.next;
             slow = slow.next;
+            
         }
         return slow;
     }
