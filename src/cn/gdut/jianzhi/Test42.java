@@ -1,6 +1,5 @@
 package cn.gdut.jianzhi;
 
-import java.util.Queue;
 
 /**
  * @Desctiption 连续子数组的最大和
