@@ -2,6 +2,7 @@ package cn.gdut.leetcode.shuangzhizhen;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Hashtable;
 
 /**
  * @ClassName ReverseVowels
@@ -19,6 +20,8 @@ public class ReverseVowels {
         if (s == null){
             return "";
         }
+
+
         int i = 0, j = s.length() - 1;
         char [] result = new char[s.length()];
         while (i <= j){
@@ -40,7 +43,8 @@ public class ReverseVowels {
     }
 
     public static void main(String[] args) {
-        ReverseVowels reverseVowels = new ReverseVowels();
-        System.out.println(reverseVowels.reverseVowels("hello"));
+        Hashtable<Object, Object> hashtable = new Hashtable<>();
+        hashtable.put("a","a");
+        System.out.println(hashtable.get("a"));
     }
 }

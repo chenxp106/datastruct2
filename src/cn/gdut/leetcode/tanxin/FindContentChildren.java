@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /**
  * @ClassName FindContentChildren
- * @Desctiption TODO
+ * @Desctiption 分饼干，让最多的孩子满足
  * @Date 2020/3/4 9:24
  */
 public class FindContentChildren {
