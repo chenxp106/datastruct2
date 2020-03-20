@@ -1,4 +1,4 @@
-package cn.gdut.leetcode.sousuo.dp;
+package cn.gdut.leetcode.dp;
 
 /**
  * @ClassName MinPathSum

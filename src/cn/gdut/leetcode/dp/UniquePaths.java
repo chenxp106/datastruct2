@@ -1,6 +1,4 @@
-package cn.gdut.leetcode.sousuo.dp;
-
-import java.util.Arrays;
+package cn.gdut.leetcode.dp;
 
 /**
  * @ClassName UniquePaths
