@@ -1,5 +1,7 @@
 package cn.gdut.leetcode.tree;
 
+import java.util.Vector;
+
 /**
  * @ClassName HasPathSum
  * @Desctiption 路径总和
