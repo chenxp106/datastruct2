@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * @ClassName Permute
- * @Desctiption TODO
+ * @Desctiption 46 全排列
  * @Date 2020/4/10 10:23
  */
 public class Permute {
