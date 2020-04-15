@@ -7,7 +7,7 @@ package cn.gdut.leetcode.sort;
  */
 public class QuickSort {
 
-    private int partition(int [] nums, int l, int h){
+    /*private int partition(int [] nums, int l, int h){
         // 比较的值，第一个
         int temp = nums[l];
         // 定义两个指针，分别指向切分元素的最小索引和最大索引
@@ -48,11 +48,44 @@ public class QuickSort {
 
     public void sort(int [] nums){
         sort(nums, 0, nums.length - 1);
+    }*/
+
+    public void sort(int [] nums){
+        sort(nums, 0, nums.length - 1);
+    }
+
+    private void sort(int [] nums, int low, int high){
+        if (low >= high){
+            return;
+        }
+        int index = patition(nums, low, high);
+        sort(nums, low, index - 1);
+        sort(nums, index + 1, high);
+    }
+
+    // 一次快拍
+    public int patition(int [] nums, int low, int high){
+        int i = low;
+        int j = high;
+        int temp = nums[low];
+        while (i < j){
+            while (i < j && temp <= nums[j]){
+                j--;
+            }
+            nums[i] = nums[j];
+            while (i < j && temp > nums[i]){
+                i++;
+            }
+            nums[j] = nums[i];
+
+        }
+        nums[i] = temp;
+        return i;
     }
 
     public static void main(String[] args) {
         QuickSort sort = new QuickSort();
-        int [] nums = {6,5,4,3,2,1};
+        int [] nums = {4,1,6,3,5,2};
         sort.sort(nums);
         for (int n :nums){
             System.out.println(n);

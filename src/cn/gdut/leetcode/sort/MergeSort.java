@@ -7,7 +7,7 @@ package cn.gdut.leetcode.sort;
  * @Date 2020/4/14 9:15
  */
 public class MergeSort {
-    public void sort(int [] nums){
+/*    public void sort(int [] nums){
         int [] tem= new int[nums.length];
         sort(nums, 0, nums.length - 1, tem);
     }
@@ -22,14 +22,14 @@ public class MergeSort {
         }
     }
 
-    /**
+    *//**
      * 合并
      * @param nums
      * @param l
      * @param m
      * @param h
      * @param temp
-     */
+     *//*
     private void merge(int [] nums, int l, int m, int h, int [] temp){
         int i = l;
         int j = m + 1;
@@ -54,6 +54,49 @@ public class MergeSort {
         for (i = 0; i < t; i++){
             nums[l+i] = temp[i];
         }
+    }*/
+
+    public void sort(int [] nums){
+        int [] temp = new int[nums.length];
+        sort(nums, 0, nums.length - 1, temp);
+    }
+
+    // 递归
+    private void sort(int [] nums, int low, int high, int [] temp){
+        if (high <= low){
+            return;
+        }
+        int mid = low + (high - low) / 2;
+        sort(nums, low, mid, temp);
+        sort(nums, mid + 1, high, temp);
+
+        merge(nums, low, mid, high, temp);
+    }
+
+    // 将[low,high]合并
+    private void merge(int [] nums, int low, int mid, int high, int [] temp){
+        int i = low, j = mid + 1;
+        int t = low;
+        while (i < mid && j < high){
+            if (nums[i] < nums[j]){
+                temp[t++] = nums[i++];
+            }else {
+                temp[t++] = nums[j++];
+            }
+        }
+        // 将剩余的添加上
+        while (i <= mid){
+            temp[t++] = nums[i++];
+        }
+        while (j <= high){
+            temp[t++] = nums[j++];
+        }
+        int k = low;
+        // 将temp复制会nums中
+        for (t = low; t <= high;t++){
+            temp[t++] = nums[k++];
+        }
+
     }
 
     public static void main(String[] args) {

@@ -10,7 +10,6 @@ public class LengthOfLongestSubstring {
         int [] freq = new int[256];
         int l = 0,  r = -1;
         int res = 0;
-
         while ( l < s.length()){
             // 当前没有出现过这个字符，右边可以加1
             if (r + 1 < s.length() && freq[s.charAt(r+1)] == 0){
