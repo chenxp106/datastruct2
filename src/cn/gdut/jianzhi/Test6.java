@@ -1,6 +1,7 @@
 package cn.gdut.jianzhi;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 public class Test6 {
@@ -42,17 +43,30 @@ public class Test6 {
      * @param listNode
      * @return
      */
-     public ArrayList<Integer> printListFromTailToHead(ListNode listNode){
-         Stack<Integer> stack = new Stack<>();
-         while (listNode != null){
-             ListNode tmp = listNode;
-             listNode = listNode.next;
-             stack.push(tmp.val);
-         }
-         ArrayList<Integer> res = new ArrayList<>();
-         while (!stack.isEmpty()){
-             res.add(stack.pop());
-         }
-         return res;
+//     public ArrayList<Integer> printListFromTailToHead(ListNode listNode){
+//         Stack<Integer> stack = new Stack<>();
+//         while (listNode != null){
+//             ListNode tmp = listNode;
+//             listNode = listNode.next;
+//             stack.push(tmp.val);
+//         }
+//         ArrayList<Integer> res = new ArrayList<>();
+//         while (!stack.isEmpty()){
+//             res.add(stack.pop());
+//         }
+//         return res;
+//    }
+    public ArrayList<Integer> printListFromTailToHead(ListNode listNode){
+        // 使用栈
+        Stack<Integer> stack = new Stack<>();
+        while (listNode != null){
+            stack.push(listNode.val);
+            listNode = listNode.next;
+        }
+        ArrayList<Integer> res = new ArrayList<>();
+        while (!stack.isEmpty()){
+            res.add(stack.pop());
+        }
+        return res;
     }
 }
