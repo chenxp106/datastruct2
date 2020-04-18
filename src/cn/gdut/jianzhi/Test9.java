@@ -7,23 +7,45 @@ import java.util.Stack;
  */
 public class Test9 {
     // 定义两个栈
-    Stack<Integer> stack1 = new Stack<>();
-    Stack<Integer> stack2 = new Stack<>();
+//    Stack<Integer> stack1 = new Stack<>();
+//    Stack<Integer> stack2 = new Stack<>();
 
-    public void push(int node){
-       stack1.push(node);
+//    public void push(int node){
+//       stack1.push(node);
+//    }
+//
+//    public int pop(){
+//
+//        // 出队列。如果不为空，则直接出，否则，将statck1中的元素全部放入到stack2中
+//        if (!stack2.isEmpty()){
+//            return stack2.pop();
+//        }
+//        // 否则
+//        while (!stack1.isEmpty()){
+//            stack2.push(stack1.pop());
+//        }
+//        return stack2.pop();
+//    }
+    Stack<Integer> stack1 = new Stack<Integer>();
+    Stack<Integer> stack2 = new Stack<Integer>();
+
+
+
+    public void push(int node) {
+        stack1.push(node);
     }
 
-    public int pop(){
-
-        // 出队列。如果不为空，则直接出，否则，将statck1中的元素全部放入到stack2中
-        if (!stack2.isEmpty()){
-            return stack2.pop();
+    public int pop() {
+        if (stack2.isEmpty()){
+            pull();
         }
-        // 否则
+        return stack2.pop();
+    }
+
+
+    private void pull(){
         while (!stack1.isEmpty()){
             stack2.push(stack1.pop());
         }
-        return stack2.pop();
     }
 }
