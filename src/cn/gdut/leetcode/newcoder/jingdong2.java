@@ -35,7 +35,7 @@ public class jingdong2 {
             map.put(in.nextInt(), in.nextInt());
         }
         while (!map.isEmpty()){
-            
+
         }
 
 

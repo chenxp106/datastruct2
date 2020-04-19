@@ -27,16 +27,17 @@ public class Test11 {
         if (array == null || array.length == 0){
             return 0;
         }
-        int l = 0;
+        int l  = 0;
         int h = array.length - 1;
         while (l < h){
             int m = l + (h - l) / 2;
-            if (array[m] < array[h]){
+            if (array[l] < array[m]){
+                l = m ;
+            }
+            else if (array[l] > array[m]){
                 h = m;
             }
-            else if (array[m] > array[h]){
-                l = m + 1;
-            }else {
+            else {
                 l++;
             }
         }

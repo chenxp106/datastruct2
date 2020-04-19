@@ -2,7 +2,7 @@ package cn.gdut.jianzhi;
 
 public class Test12 {
 
-    private static int [][] next = {{-1,0},{1,0}, {0,-1},{0,1}};
+/*    private static int [][] next = {{-1,0},{1,0}, {0,-1},{0,1}};
     private int rows;
     private int cols;
 
@@ -54,6 +54,50 @@ public class Test12 {
         }
         // 标记未被访问
         visited[r][c] = false;
+        return false;
+    }*/
+
+    private int [][] dir = {{-1,0},{1,0}, {0,-1},{0,1}};
+    private int rows ;
+    private int cols;
+    private char [][] grid;
+    public boolean hasPath(char[] matrix, int rows, int cols, char[] str)
+    {
+        grid = new char[rows][cols];
+        this.rows = rows;
+        this.cols = cols;
+        int index = 0;
+        // 构建格子
+        for (int i = 0; i < rows; i++){
+            for (int j = 0; j< cols;j ++){
+                grid[i][j] = matrix[index++];
+            }
+        }
+        boolean [][] visited = new boolean[rows][cols];
+        for (int i = 0; i < rows; i++){
+            for (int j = 0; j < cols; j++){
+                if (tracking(str, visited, i, j, 0)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean tracking(char [] str, boolean [][] visited, int i, int j, int len){
+        if (len == str.length){
+            return true;
+        }
+        if ( i < 0 || i >= rows || j < 0 || j >= cols || visited[i][j] || str[len] != grid[i][j]){
+            return false;
+        }
+        visited[i][j] = true;
+        for (int [] d : dir){
+            if (tracking(str, visited, i + d[0], j + d[1] ,len+ 1)){
+                return true;
+            }
+        }
+        visited[i][j] = false;
         return false;
     }
 
