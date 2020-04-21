@@ -7,39 +7,40 @@ public class Test17 {
      * @param n
      */
     public void  print1ToMaxOfNDigits(int n){
-        if (n < 0){
+        if (n <= 0){
             return;
         }
-        // 定义存储的字符数组
-        char [] numbers = new char[n];
-        print1ToMaxOfNDigits(numbers,0);
+        char [] number = new char[n];
+        print1ToMaxOfNDigits(number,0);
 
     }
-
-    private void print1ToMaxOfNDigits(char [] numbers, int digits){
-        if (numbers.length == digits){
-            printNumber(numbers);
+    private void print1ToMaxOfNDigits(char [] number, int digit){
+        if (digit == number.length){
+            printNumber(number);
             return;
         }
-        for (int i = 0;i < 10 ;i++){
-            numbers[digits] = (char)(i + '0');
-            print1ToMaxOfNDigits(numbers, digits+1);
+        for (int i = 0; i < 10; i++){
+            number[digit] = (char) (i + '0');
+            print1ToMaxOfNDigits(number, digit+1);
         }
     }
 
-    private void printNumber(char[] numbers){
+    private void printNumber(char [] number){
         int index = 0;
-        while (index < numbers.length && numbers[index] == '0'){
+        while (index < number.length && number[index] == '0') {
+
             index++;
         }
-        while (index < numbers.length){
-            System.out.print(numbers[index++]);
+        while (index < number.length){
+            System.out.print(number[index++]);
         }
         System.out.println();
     }
 
+
+
     public static void main(String[] args) {
         Test17 test17 = new Test17();
-        test17.print1ToMaxOfNDigits(5);
+        test17.print1ToMaxOfNDigits(3);
     }
 }
