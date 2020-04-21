@@ -9,7 +9,7 @@ public class Test16 {
      * @param exponent
      * @return
      */
-    public double Power(double base, int exponent){
+/*    public double Power(double base, int exponent){
         // 递归出口
         if (exponent == 0){
             return 1;
@@ -29,7 +29,27 @@ public class Test16 {
         }
         return isNegtive ? 1 / power : power;
 
+    }*/
+
+
+    public double Power(double base, int exponent) {
+        boolean flag = exponent > 0;
+        base = flag ? base : -base;
+        if (exponent == 0){
+            return 1;
+        }
+        if (exponent == 1){
+            return base;
+        }
+        double res = base * Power(base * base, exponent / 2);
+        if (!flag){
+            return (double) (1.0 / res);
+        }
+        else {
+            return res;
+        }
     }
+
 
     public static void main(String[] args) {
         Test16 test16 = new Test16();
