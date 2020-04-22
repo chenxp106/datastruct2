@@ -8,7 +8,7 @@ public class Test18_1 {
      * @param tobeDelete
      * @return
      */
-    public ListNode deleteNode(ListNode head, ListNode tobeDelete){
+/*    public ListNode deleteNode(ListNode head, ListNode tobeDelete){
         // 如果不是最后一个节点
         if (tobeDelete.next != null){
             tobeDelete.val = tobeDelete.next.val;
@@ -28,6 +28,30 @@ public class Test18_1 {
                 }
                 cur.next = null;
             }
+        }
+        return head;
+    }*/
+
+    // O(1)时间复杂度删除节点
+    public ListNode deleteNode(ListNode head, ListNode tobeDelete) {
+        if (tobeDelete.next != null){
+            tobeDelete.val = tobeDelete.next.val;
+            tobeDelete.next = tobeDelete.next.next;
+        }
+        // 最后一个节点
+        else {
+            ListNode cur = head;
+            // 只有一个节点
+            if (head == tobeDelete){
+                head = null;
+            }
+            else {
+                while (cur.next != tobeDelete){
+                    cur = cur.next;
+                }
+                cur.next = null;
+            }
+
         }
         return head;
     }
