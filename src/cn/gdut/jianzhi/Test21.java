@@ -1,5 +1,7 @@
 package cn.gdut.jianzhi;
 
+import java.util.Arrays;
+
 /**
  * 将奇数放到偶数前面
  * 统计奇数的个数，然后拷贝数组。
@@ -7,7 +9,7 @@ package cn.gdut.jianzhi;
  */
 public class Test21 {
     public void reOrderArray(int [] array){
-        // 先统计奇数的个数
+/*        // 先统计奇数的个数
         int oddCnt = 0;
         for (int x : array){
             if (isOdd(x)){
@@ -25,12 +27,31 @@ public class Test21 {
             else {
                 array[j++] = x;
             }
+        }*/
+
+        int [] temp = new int[array.length];
+        // 统计奇数的个数
+        int count = 0;
+        for (int x : array){
+            if (isOdd(x)){
+                count++;
+            }
+        }
+        temp = Arrays.copyOf(array, array.length);
+        int i = 0; int j = count;
+        for (int x : temp){
+            if (isOdd(x)){
+                array[i++] = x;
+            }
+            else {
+                array[count++] = x;
+            }
         }
 
     }
 
     private boolean isOdd(int x){
-        return  x % 2 == 1 ? true : false;
+        return  x % 2 == 1 ;
     }
 
 

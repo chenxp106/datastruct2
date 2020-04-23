@@ -8,32 +8,61 @@ public class Test19 {
      * @return
      */
     public boolean match(char[] str, char [] pattern){
-        int m = str.length, n = pattern.length;
-        boolean [][] dp = new boolean[m+1][n+1];
-
-        dp[0][0] = true;
-        for (int i = 1;i <= n;i++){
-            if (pattern[i-1] == '*'){
-                dp[0][i] = dp[0][i-1];
-            }
+        if (str == null || pattern == null){
+            return false;
         }
-        for (int i = 1; i <= m; i++){
-            for (int j = 1; j <= n; j++)
-            {
-                if (str[i - 1] == pattern[j - 1] || pattern[j - 1] == '.')
-                    dp[i][j] = dp[i - 1][j - 1];
-                else if (pattern[j - 1] == '*')
-                    if (pattern[j - 2] == str[i - 1] || pattern[j - 2] == '.') {
-                        dp[i][j] |= dp[i][j - 1]; // a* counts as single a
-                        dp[i][j] |= dp[i - 1][j]; // a* counts as multiple a
-                        dp[i][j] |= dp[i][j - 2]; // a* counts as empty
-                    } else
-                        dp[i][j] = dp[i][j - 2];
+
+        return matchCore(str, 0, pattern, 0);
+    }
+
+    /**
+     * 如果匹配串存在下一个字符，并且是 *
+     *     如果字符串当前字符和模式串当前字符匹配，分三种情况
+     *          1. 认为 * 前面的字符出现了0次，i不变 ，j + 2
+     *          2. 认为 * 前面的字符出现了1次，i+1, j+1
+     *          3. 认为 * 前面的字符出现了多次，i+1, j不变
+     *      如果字符串当前字符和模式串不匹配，则
+     *          认为 * 前面的字符出现了0次，i不变，j+2
+     * 如果下一个字符不是 *
+     *     如果字符串当前字符和模式串匹配，则
+     *         匹配下一个字符，i+1, j+1
+     *     如果不匹配
+     *         返回false，不匹配
+     */
+    private boolean matchCore(char [] str, int strIndex, char [] pattern, int patternIndex){
+        // 都到了末尾，说明匹配成功
+        if (strIndex == str.length && patternIndex == pattern.length){
+            return true;
+        }
+        // 如果模式串先到末尾，说明匹配不成功
+        if (strIndex != str.length && patternIndex == pattern.length){
+            return false;
+        }
+        // 如果下一个字符是 *
+        if (patternIndex + 1 < pattern.length && pattern[patternIndex+1] == '*'){
+            // 如果当前字符是匹配的
+            if (strIndex != str.length && (str[strIndex] == pattern[patternIndex] || pattern[patternIndex] == '.')){
+                return matchCore(str, strIndex, pattern, patternIndex + 2) ||
+                        matchCore(str, strIndex + 1, pattern, patternIndex + 2) ||
+                        matchCore(str, strIndex + 1, pattern, patternIndex);
+            }
+            // 如果当前字符不匹配，认为 * 前的字符出现0次
+            else {
+                return matchCore(str, strIndex, pattern, patternIndex + 2);
+
             }
 
         }
-        return dp[m][n];
 
+        // 如果下一个字符不是 *
+        // 当前字符是匹配的
+        if (strIndex != str.length && (str[strIndex] == pattern[patternIndex] || pattern[patternIndex] == '.')) {
+            return matchCore(str, strIndex + 1, pattern, patternIndex + 1);
+        }
+        // 当前字符不匹配，直接返回false；
+        else {
+            return false;
+        }
     }
 
     public static void main(String[] args) {
@@ -43,3 +72,18 @@ public class Test19 {
         System.out.println(test19.match(str1,str2));
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
