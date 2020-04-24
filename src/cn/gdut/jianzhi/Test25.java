@@ -5,42 +5,35 @@ package cn.gdut.jianzhi;
  */
 public class Test25 {
     public ListNode Merge(ListNode list1, ListNode list2){
-
-        // 如果两个都为空，返回 null
         if (list1 == null && list2 == null){
             return null;
         }
-        // 其中一个为空，返回另一个
-        if (list1 == null){
-            return list2;
-        }
-        if (list2 == null){
-            return list1;
-        }
-        // 创建 一个头节点
-        ListNode newHead = new ListNode(-1);
-
-        ListNode cur = null;
-        cur = newHead;
-        ListNode tmp = null;
+        // 创建一个头结点
+        ListNode newH = new ListNode(-1);
+        ListNode pre = newH;
+        ListNode temp;
         while (list1 != null && list2 != null){
             if (list1.val < list2.val){
-                tmp = list1;
+                temp = list1;
                 list1 = list1.next;
+
             }
             else {
-                tmp = list2;
+                temp = list2;
                 list2 = list2.next;
+
             }
-            cur.next = tmp;
-            cur = tmp;
+            pre.next = temp;
+            pre = temp;
         }
-        if (list1 == null){
-            cur.next = list2;
+
+        while (list1 != null){
+            // 将list1接上
+            pre.next = list1;
         }
-        if (list2 == null){
-            cur.next = list1;
+        while (list2 != null){
+            pre.next = list2;
         }
-        return newHead.next;
+        return newH.next;
     }
 }
