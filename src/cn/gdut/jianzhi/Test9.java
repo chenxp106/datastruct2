@@ -1,5 +1,6 @@
 package cn.gdut.jianzhi;
 
+import java.util.NoSuchElementException;
 import java.util.Stack;
 
 /**
@@ -29,8 +30,6 @@ public class Test9 {
     Stack<Integer> stack1 = new Stack<Integer>();
     Stack<Integer> stack2 = new Stack<Integer>();
 
-
-
     public void push(int node) {
         stack1.push(node);
     }
@@ -38,6 +37,9 @@ public class Test9 {
     public int pop() {
         if (stack2.isEmpty()){
             pull();
+        }
+        if (stack2.isEmpty()){
+            throw new NoSuchElementException();
         }
         return stack2.pop();
     }

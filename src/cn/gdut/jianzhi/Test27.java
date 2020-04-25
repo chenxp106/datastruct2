@@ -13,15 +13,13 @@ public class Test27 {
     }
 
     private TreeNode reverse(TreeNode root){
-        //递归出口
         if (root == null){
             return null;
         }
-        TreeNode tmp = root.left;
+        TreeNode temp = reverse(root.left);
         root.left = reverse(root.right);
-        root.right = reverse(tmp);
+        root.right = temp;
         return root;
     }
-
 
 }
