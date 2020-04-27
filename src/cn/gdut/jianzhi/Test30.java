@@ -4,25 +4,32 @@ import java.util.Stack;
 
 public class Test30 {
 
-    Stack<Integer> stack = new Stack<>();
+    // 用两个栈来实现
+    Stack<Integer> data = new Stack<>();
     Stack<Integer> minStack = new Stack<>();
 
     // 同时进栈
     public void push(int node){
-        stack.push(node);
-        minStack.push(minStack.isEmpty() ? node : Math.min(node, minStack.peek()));
+        data.push(node);
+        if (minStack.isEmpty()){
+            minStack.push(node);
+        }
+        else {
+            minStack.push(minStack.peek() < node ? minStack.peek() : node);
+        }
+
     }
 
     /**
      * 同时出栈
      */
     public void pop(){
+        data.pop();
         minStack.pop();
-        stack.pop();
     }
 
     public int top(){
-        return stack.pop();
+        return data.peek();
     }
 
     public int min(){

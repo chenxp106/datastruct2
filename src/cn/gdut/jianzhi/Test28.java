@@ -11,7 +11,6 @@ public class Test28 {
         }
         return isSys(pRoot.left, pRoot.right);
     }
-
     private boolean isSys(TreeNode root1, TreeNode root2){
         if (root1 == null && root2 == null){
             return true;
