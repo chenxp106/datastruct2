@@ -31,34 +31,36 @@ public class Test18_2 {
             }
         }
         return newH.next;*/
-        if (pHead == null || pHead.next == null){
-            return pHead;
-        }
-        // 头结点
-        ListNode newNode = new ListNode(-1);
-        newNode.next = pHead;
-        ListNode cur = newNode.next;
-        ListNode nextNode = cur.next;
-        ListNode pre = newNode;
-        while (nextNode != null){
-            if (cur.val != nextNode.val){
-                pre = cur;
-                cur = nextNode;
-                nextNode = nextNode.next;
-            }
-            else {
-                while (nextNode != null && cur.val == nextNode.val){
-                    nextNode = nextNode.next;
-                }
-                cur = nextNode;
-                pre.next = nextNode;
+//        if (pHead == null || pHead.next == null){
+//            return pHead;
+//        }
+//        // 头结点
+//        ListNode newNode = new ListNode(-1);
+//        newNode.next = pHead;
+//        ListNode cur = newNode.next;
+//        ListNode nextNode = cur.next;
+//        ListNode pre = newNode;
+//        while (nextNode != null){
+//            if (cur.val != nextNode.val){
+//                pre = cur;
+//                cur = nextNode;
+//                nextNode = nextNode.next;
+//            }
+//            else {
+//                while (nextNode != null && cur.val == nextNode.val){
+//                    nextNode = nextNode.next;
+//                }
+//                cur = nextNode;
+//                pre.next = nextNode;
+//
+//                if (nextNode != null){
+//                    nextNode = nextNode.next;
+//                }
+//            }
+//        }
+//        return newNode.next;
+        return null;
 
-                if (nextNode != null){
-                    nextNode = nextNode.next;
-                }
-            }
-        }
-        return newNode.next;
     }
 
 }
