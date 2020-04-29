@@ -9,29 +9,27 @@ import java.util.Queue;
  */
 public class Test32_2 {
     ArrayList<ArrayList<Integer>> Print(TreeNode pRoot){
-        ArrayList<ArrayList<Integer>> resutlt = new ArrayList<>();
+        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
         if (pRoot == null){
-            return resutlt;
+            return res;
         }
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(pRoot);
         while (!queue.isEmpty()){
             int size = queue.size();
-            ArrayList<Integer> curRes = new ArrayList<>();
-            while (size-- > 0){
-                // 出队
-                TreeNode node = queue.poll();
-                //访问它
-                curRes.add(node.val);
-                if (node.left != null){
-                    queue.add(node.left);
+            ArrayList<Integer> list = new ArrayList<>();
+            while (size -- > 0){
+                TreeNode cur = queue.poll();
+                list.add(cur.val);
+                if (cur.left != null){
+                    queue.add(cur.left);
                 }
-                if (node.right != null){
-                    queue.add(node.right);
+                if (cur.right != null){
+                    queue.add(cur.right);
                 }
             }
-            resutlt.add(curRes);
+            res.add(list);
         }
-        return resutlt;
+        return res;
     }
 }
