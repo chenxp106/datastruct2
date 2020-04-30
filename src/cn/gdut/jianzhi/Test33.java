@@ -12,28 +12,33 @@ public class Test33 {
         return isBST(sequence, 0, sequence.length - 1);
     }
 
-    private boolean isBST(int [] sequence, int low, int high){
-        // 出口
-        if (high - low <= 1){
+    private boolean isBST(int [] sequence, int l, int h){
+        if (l >= h){
             return true;
         }
-        // 根节点的值
-        int root = sequence[high];
-        // 找出左右子树的位置,i将左右子树分开
-        int i = 0;
-        while (sequence[i] < root){
+        int last = sequence[h];
+        int i = l;
+        while (i < h){
+            if (sequence[i] > last){
+                break;
+            }
             i++;
         }
-        // 判断右子树是否满足
-        int j = i;
-        while (j < high){
-            if (sequence[j] < root){
+        // 标记中间
+        int cur = i;
+        while (i < h){
+            if (sequence[i] < last){
                 return false;
             }
-            j++;
+            i++;
         }
-        // 递归左右子树
-        return isBST(sequence, low, i-1 ) && isBST(sequence, i, high-1 );
+        return isBST(sequence, l, cur - 1) && isBST(sequence, cur, h- 1);
     }
+
+    public static void main(String[] args) {
+        Test33 test33 = new Test33();
+        System.out.println(test33.VerfySquenceOfBST(new int[]{1,3,2,5,4}));
+    }
+
 
 }
