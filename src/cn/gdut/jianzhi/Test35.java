@@ -43,34 +43,32 @@ public class Test35 {
         if (pHead == null){
             return null;
         }
-
-        // 插入节点
         RandomListNode cur = pHead;
         while (cur != null){
-            RandomListNode node = new RandomListNode(cur.label);
-            node.next = cur.next;
-            cur.next = node;
-            cur = node.next;
+            RandomListNode temp = new RandomListNode(cur.label);
+            temp.next = cur.next;
+            cur.next = temp;
+            cur = temp.next;
         }
-
-        // 连接随机指针
+        // 复制随机指针
         cur = pHead;
         while (cur != null){
-
+            RandomListNode clone = cur.next;
             if (cur.random != null){
-                cur.next.random = cur.random.next;
+                clone.random = cur.random.next;
             }
-            cur = cur.next.next;
-        }
 
-        // 拆分链表
-        RandomListNode p = pHead.next;
+            cur = clone.next;
+        }
+        // 拆分
         cur = pHead;
+        RandomListNode p = pHead.next;
         while (cur.next != null){
             RandomListNode next = cur.next;
             cur.next = next.next;
             cur = next;
         }
         return p;
+
     }
 }
