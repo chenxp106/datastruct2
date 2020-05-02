@@ -39,34 +39,33 @@ public class Test35 {
             cur = next;
         }
         return pColne;*/
-
         if (pHead == null){
             return null;
         }
+        // 先复制节点
         RandomListNode cur = pHead;
         while (cur != null){
-            RandomListNode temp = new RandomListNode(cur.label);
-            temp.next = cur.next;
-            cur.next = temp;
-            cur = temp.next;
+            RandomListNode clone = new RandomListNode(cur.label);
+            clone.next = cur.next;
+            cur.next = clone;
+            cur = clone.next;
         }
-        // 复制随机指针
+        // 复制randomzhizhen
         cur = pHead;
         while (cur != null){
             RandomListNode clone = cur.next;
             if (cur.random != null){
                 clone.random = cur.random.next;
+                cur = clone.next;
             }
-
-            cur = clone.next;
         }
         // 拆分
         cur = pHead;
-        RandomListNode p = pHead.next;
+        RandomListNode p = cur.next;
         while (cur.next != null){
-            RandomListNode next = cur.next;
-            cur.next = next.next;
-            cur = next;
+           RandomListNode next = cur.next;
+           cur.next = next.next;
+           cur = next;
         }
         return p;
 

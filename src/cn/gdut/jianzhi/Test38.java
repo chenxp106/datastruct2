@@ -8,48 +8,42 @@ import java.util.Arrays;
  * @Date 2019/11/21/021
  **/
 public class Test38 {
-    ArrayList<String> res = new ArrayList<>();
 
+    ArrayList<String> res = new ArrayList<>();
     public ArrayList<String> Permutation(String str){
         if (str == null || str.length() == 0){
             return res;
         }
-        // 将字符串转化为字符数组
         char[] chars = str.toCharArray();
-        // 要对集合排序
         Arrays.sort(chars);
-        tracking(chars, new boolean[chars.length], new StringBuilder());
+        int len = str.length();
+        StringBuilder builder = new StringBuilder();
+        boolean [] visited = new boolean[len];
+        tracking(chars, builder, visited);
         return res;
     }
 
-
-    private void tracking(char [] chars, boolean [] visited, StringBuilder s){
-        if (s.length() == chars.length){
-            res.add(s.toString());
+    private void tracking(char [] str, StringBuilder builder, boolean [] visited){
+        if (builder.length() == str.length){
+            res.add(builder.toString());
             return;
         }
-
-        for (int i = 0; i < chars.length;i++){
-            // 如果访问过
+        // 重复访问
+        for (int i = 0; i < str.length; i++){
             if (visited[i]){
                 continue;
             }
-            // 保证当前加入的字符不重复
-            if (i != 0 && chars[i] == chars[i-1] && !visited[i-1]){
+            if (i != 0 && str[i] == str[i-1] && !visited[i-1]){
                 continue;
             }
-            // 标记被访问过
             visited[i] = true;
-            // 加入s中
-            s.append(chars[i]);
-            // 递归访问
-            tracking(chars, visited, s);
-            // 移除一个元素
-            s.deleteCharAt(s.length() - 1);
-            // 标记未被访问
+            builder.append(str[i]);
+            tracking(str, builder, visited);
+            builder.deleteCharAt(builder.length() - 1);
             visited[i] = false;
         }
     }
+
 
     public static void main(String[] args) {
         Test38 test38 = new Test38();

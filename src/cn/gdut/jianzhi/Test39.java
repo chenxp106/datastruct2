@@ -7,7 +7,7 @@ package cn.gdut.jianzhi;
 public class Test39 {
 
     public int  MoreThanHalfNum_Solution(int [] array){
-        if (array == null || array.length == 0){
+/*        if (array == null || array.length == 0){
             return 0;
         }
         // 标记第一个数
@@ -39,6 +39,26 @@ public class Test39 {
         if (cnt <= n / 2){
             return 0;
         }
-        return cur;
+        return cur;*/
+
+        if (array == null || array.length == 0){
+            return 0;
+        }
+        int cnt = 1;
+        int cur = array[0];
+        for (int i = 1;i < array.length;i++){
+            cnt = array[i] == cur ? cnt + 1 : cnt - 1;
+            if (cnt == 0){
+                cur = array[i];
+                cnt = 1;
+            }
+        }
+        cnt = 0;
+        for (int x : array){
+            if (x == cur){
+                cnt++;
+            }
+        }
+        return cnt > (array.length / 2 ) ? cur : 0;
     }
 }
