@@ -1,7 +1,7 @@
 package cn.gdut.jianzhi;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @Desctiption 最小的k个数
@@ -17,37 +17,47 @@ public class Test40 {
      * @param k
      * @return
      */
+//    public ArrayList<Integer> GetLeastNumbers_solution(int [] input, int k){
+//        ArrayList<Integer> res = new ArrayList<>();
+//        int len = input.length;
+//        if (k > len || k < 1){
+//            return res;
+//        }
+//        findK(input, 0, len - 1, k -1);
+//        for (int i = 0; i < k; i++){
+//            res.add(input[i]);
+//        }
+//        return res;
+//
+//    }
     public ArrayList<Integer> GetLeastNumbers_solution(int [] input, int k){
-        int n = input.length;
-        ArrayList<Integer> res =  new ArrayList<>();
-        if (input == null || n == 0){
+        ArrayList<Integer> res = new ArrayList<>();
+        int len = input.length;
+        if (k > len || k < 1){
             return res;
         }
-        if (k > n || k <=0){
-            return res;
+        Queue<Integer> queue = new PriorityQueue<>((o1, o2) -> o2 - o1);
+        for (int i = 0;i < k; i++){
+            queue.add(input[i]);
         }
-        // 找到k个排序好的k个数
-        findK(input, 0, n-1, k-1);
-        // 将前k个数输出
-        for (int i = 0;i < k ;i++){
-            res.add(input[i]);
+        while (k > 0){
+            res.add(queue.poll());
+            k--;
         }
         return res;
     }
 
     private void findK(int [] input, int low, int high, int k){
-        // 返回的结果表示当前的k，前半部分比k小，后半部分比k大。
-        int value = partion(input, low, high);
-        if (value == k){
+
+        int index = partion(input, low, high);
+        if (index == k){
             return;
         }
-        // 在前半段找
-        if (value > k ){
-            findK(input, low, value-1, k);
+        if (index > k){
+            findK(input, low, index - 1, k);
         }
-        // 在后半段找
         else {
-            findK(input, value+1, high, k);
+            findK(input, index + 1, high, k);
         }
     }
 
@@ -61,18 +71,18 @@ public class Test40 {
     private int partion(int [] input, int low, int high){
         int i = low;
         int j = high;
-        int tmp = input[i];
-        while (i != j){
-            while ( i < j && tmp <= input[j]){
+        int temp = input[i];
+        while (i < j){
+            while (i < j && temp <= input[j]){
                 j--;
             }
             input[i] = input[j];
-            while (i < j && tmp >= input[i]){
+            while (i < j && temp >= input[i]){
                 i++;
             }
             input[j] = input[i];
         }
-        input[i] = tmp;
+        input[i] = temp;
         return i;
     }
 
