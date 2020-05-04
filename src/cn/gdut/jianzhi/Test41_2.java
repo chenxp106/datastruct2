@@ -12,7 +12,6 @@ import java.util.Queue;
 public class Test41_2 {
 
     Queue<Character> queue = new LinkedList<>();
-    // 定义一个数组
     int [] chars = new int[256];
 
     public void Insert(char ch){
@@ -21,7 +20,6 @@ public class Test41_2 {
         while (!queue.isEmpty() && chars[queue.peek()] > 1){
             queue.poll();
         }
-
     }
 
     public char FirstApperinOnce(){
