@@ -10,16 +10,14 @@ import java.util.Arrays;
 public class Test45 {
     public String PrintMinNumber(int [] numbers){
         String res = "";
-        // 判空
         if (numbers == null || numbers.length == 0){
             return res;
         }
-        // 变成字符串
         String [] nums = new String[numbers.length];
-        for (int i = 0;i < numbers.length ;i++){
+        for (int i = 0; i < numbers.length; i++){
             nums[i] = numbers[i] + "";
         }
-        Arrays.sort(nums,((o1, o2) -> (o1+o2).compareTo(o2+o1)));
+        Arrays.sort(nums, (s1, s2) -> (s1+s2).compareTo(s2+s1));
         for (String str : nums){
             res += str;
         }
