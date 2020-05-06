@@ -55,14 +55,14 @@ public class Test53 {
      * @return
      */
     private int findIndex(int [] array, int k){
-        int l = 0, h = array.length;
+        int l = 0, h = array.length ;
         while (l < h){
-            int mid = l + (h - l) / 2;
-            if (k > array[mid]){
-                l = mid + 1;
+            int m = l + (h - l) / 2;
+            if (array[m] >= k){
+                h = m;
             }
             else {
-                h = mid;
+                l = m + 1;
             }
         }
         return l;
