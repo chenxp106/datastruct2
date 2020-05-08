@@ -27,30 +27,25 @@ public class Test54 {
         // 遍历右子树
         inOrder(p.right,k);
     }*/
-    private TreeNode ret;
-    private int cnt = 0;
-
+    TreeNode ret = null;
+    int cnt = 0;
     TreeNode KthNode(TreeNode pRoot, int k){
-        if ( pRoot == null || k <= 0){
+        if (pRoot == null || k < 0){
             return null;
         }
-        // 中序遍历
-        inOrder(pRoot,k);
+        inOrder(pRoot, k);
         return ret;
     }
 
     private void inOrder(TreeNode root, int k){
-        // 出口
         if (root == null || cnt >= k){
-            return;
+            return ;
         }
-        // 遍历左子树
         inOrder(root.left, k);
         cnt++;
-        // 将但钱的节点赋值给返回值ret
         if (cnt == k){
             ret = root;
         }
-        inOrder(root.right,k);
+        inOrder(root.right, k);
     }
 }
