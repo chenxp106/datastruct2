@@ -10,12 +10,9 @@ public class Test55_1 {
     }
 
     private int deep(TreeNode p){
-        if (p == null){
+        if ( p == null){
             return 0;
         }
-        // 分别求出左右子树的高度
-        int left = deep(p.left);
-        int right = deep(p.right);
-        return Math.max(left, right) + 1;
+        return Math.max(deep(p.left), deep(p.right)) + 1;
     }
 }
