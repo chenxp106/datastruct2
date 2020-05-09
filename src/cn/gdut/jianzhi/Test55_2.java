@@ -37,26 +37,29 @@ public class Test55_2 {
         return Math.max(left,right) + 1;
     }*/
 
-    private boolean isBalanced = true;
 
+    private boolean isBalance = true;
     public boolean IsBalanced_Solution(TreeNode root){
         if (root == null){
             return true;
         }
-         deep(root);
-        return isBalanced;
+        height(root);
+        return isBalance;
     }
 
-    private int deep(TreeNode root){
-        if (root == null || !isBalanced){
+    private int height(TreeNode root){
+        if (root == null || !isBalance){
             return 0;
         }
-        int left = deep(root.left);
-        int right = deep(root.right);
-        if (Math.abs(left - right) > 1){
-            isBalanced = false;
-
+        int left = height(root.left);
+        int right = height(root.right);
+        if (Math.abs(left - right ) > 1){
+            isBalance = false;
+            return 0;
         }
-        return 1 + Math.max(left, right);
+        else {
+            return Math.max(left, right) + 1;
+        }
     }
+
 }
