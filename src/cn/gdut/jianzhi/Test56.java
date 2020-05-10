@@ -12,7 +12,7 @@ public class Test56 {
         }
         diff &= -diff;
         for (int num : array){
-            if ((num & diff )== 0){
+            if ((diff ^= num) == 0){
                 num1[0] ^= num;
             }
             else {

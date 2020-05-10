@@ -1,6 +1,7 @@
 package cn.gdut.jianzhi;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * @Desctiption TODO
@@ -47,28 +48,26 @@ public class Test57_1 {
             }
         }
         return res;*/
-
-        ArrayList<Integer> ret = new ArrayList<>();
+        ArrayList<Integer> res = new ArrayList<>();
         if (array == null || array.length == 0){
-            return ret;
+            return res;
         }
         int i = 0, j = array.length - 1;
         while (i < j){
-            int tmp = array[i] + array[j];
-            if (tmp > sum){
+            int temp = array[i] + array[j];
+            if (temp == sum){
+                res.add(array[i]);
+                res.add(array[j]);
+                return res;
+            }
+            else if (temp > sum){
                 j--;
             }
-            else if (tmp < sum){
+            else {
                 i++;
             }
-            // 相等
-            else {
-                ret.add(array[i]);
-                ret.add(array[j]);
-                return ret;
-            }
         }
-        return ret;
+        return res;
     }
 
     public static void main(String[] args) {
