@@ -6,14 +6,13 @@ package cn.gdut.jianzhi;
  **/
 public class Test58_2 {
     public String LeftRotateString(String str, int n){
-        if (str == null || str.length() == 0){
+        if (str == null || str.length() == 0 || n > str.length()){
             return "";
         }
-        int len = str.length();
-        char [] chars = str.toCharArray();
+        char[] chars = str.toCharArray();
         reverse(chars, 0, n-1);
-        reverse(chars, n, len-1);
-        reverse(chars, 0, len-1);
+        reverse(chars, n, chars.length - 1);
+        reverse(chars, 0, chars.length - 1);
         return new String(chars);
     }
 

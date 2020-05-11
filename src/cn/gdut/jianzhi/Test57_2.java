@@ -41,36 +41,32 @@ public class Test57_2 {
             }
         }
         return ret;*/
-        ArrayList<ArrayList<Integer>> ret = new ArrayList<>();
-        // 定义开始位置
-        int start = 1, end = 2;
+        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
+        int start = 1;
+        int end = 2;
         int curSum = 3;
-        while (end < sum){
+        while (start < end){
             if (curSum > sum){
-                curSum = curSum - start;
+                curSum -= start;
                 start++;
             }
             else if (curSum < sum){
                 end++;
                 curSum += end;
             }
-            // 相等情况
             else {
-                // 将中间的数加上
                 ArrayList<Integer> list = new ArrayList<>();
-                for (int i = start; i <= end ;i++){
+                for (int i = start; i <= end; i++){
                     list.add(i);
                 }
-                ret.add(list);
-                // 同时将窗口后移一个.这个有顺序
+                res.add(list);
                 curSum -= start;
                 start++;
                 end++;
                 curSum += end;
             }
-
         }
-        return ret;
+        return res;
 
     }
 
