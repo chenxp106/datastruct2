@@ -38,20 +38,25 @@ public class Test61 {
             return false;
         }
         Arrays.sort(numbers);
-        int k = 0;
-        for (int i = 0; i< numbers.length; i++){
-            if (numbers[i] == 0){
-                k++;
-                continue;
+        // 统计0的个数
+        int cnt = 0;
+        for (int x : numbers){
+            if (x == 0){
+                cnt++;
             }
-            if (i != 0 && numbers[i-1] != 0){
-                if (numbers[i] == numbers[i-1]){
-                    return false;
-                }
-                k += numbers[i] - numbers[i-1] -1;
+            else {
+                break;
             }
         }
-        return k >= 0;
+        for (int k = cnt; k < numbers.length - 1; k++){
+            if (numbers[k + 1] == numbers[k]){
+                return false;
+            }
+            int m = numbers[k + 1] - numbers[k] - 1;
+            cnt -= m;
+        }
+        return cnt >= 0;
+
     }
 
     public static void main(String[] args) {

@@ -30,24 +30,22 @@ public class Test59 {
             ret.add(heap.peek());
         }
         return ret;*/
-        ArrayList<Integer> ret = new ArrayList<>();
+        ArrayList<Integer> res = new ArrayList<>();
         if (num == null || num.length == 0 || size <= 0 || size > num.length){
-            return ret;
+            return res;
         }
         // 建立一个大根堆
-        Queue<Integer> heap =new PriorityQueue<Integer>((o1,o2) -> o2 - o1);
-        // 将前面size个放入堆中
+        Queue<Integer> queue = new PriorityQueue<Integer>((o1, o2) -> o2 - o1);
         for (int i = 0; i < size; i++){
-            heap.add(num[i]);
+            queue.add(num[i]);
         }
-        ret.add(heap.peek());
-        // 将剩下的放到对堆中
-        for (int i = size, j = 0; i < num.length; i++, j++){
-            // 先取出一个元素
-            heap.remove(num[j]);
-            heap.add(num[i]);
-            ret.add(heap.peek());
+        res.add(queue.peek());
+        int n = num.length;
+        for (int i = size, j = 0; i < n; i++, j++){
+            queue.remove(num[j]);
+            queue.add(num[i]);
+            res.add(queue.peek());
         }
-        return ret;
+        return res;
     }
 }
