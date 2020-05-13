@@ -6,17 +6,15 @@ package cn.gdut.jianzhi;
  **/
 public class Test63 {
     public int maxProfit(int [] prices){
-        if (prices == null || prices.length == 0){
+        if (prices == null || prices.length == 1){
             return 0;
         }
-        // 定义当前最大收益
-        int curMax = 0;
-        // 最小的卖出
-        int min = prices[0];
-        for (int i = 1; i < prices.length;i++){
-            curMax = Math.max(curMax, (prices[i] - min)) ;
-            min = Math.min(min, prices[i]);
+        int profit = 0;
+        int curMin = prices[0];
+        for (int i = 1; i < prices.length; i++){
+            curMin = Math.min(curMin, prices[i]);
+            profit = Math.max(profit, prices[i] - curMin);
         }
-        return curMax;
+        return profit;
     }
 }
