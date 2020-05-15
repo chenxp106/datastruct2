@@ -31,6 +31,31 @@ public class Test67 {
             throw new RuntimeException("上溢出");
         }
         return isNeg ? -res : res;
+//        int res = 0;
+//        if (str == null || str.length() == 0){
+//            return res;
+//        }
+//        boolean isNeg = false;
+//        char[] chars = str.toCharArray();
+//        for (int i = 0; i < str.length(); i++){
+//            if (chars[i] == '-'){
+//                isNeg = true;
+//                continue;
+//            }
+//            if (chars[i] == '+'){
+//                continue;
+//            }
+//            if (chars[i] <= '9' && chars[i] >= '0'){
+//                res = res * 10 + chars[i] - '0';
+//            }
+//            else {
+//                return 0;
+//            }
+//        }
+//        if (res > Integer.MAX_VALUE){
+//            throw new RuntimeException("上溢出");
+//        }
+//        return isNeg ? -res : res;
     }
 
     public static void main(String[] args) {

@@ -8,22 +8,39 @@ package cn.gdut.jianzhi;
 public class Test66 {
     public int [] multiply(int [] A){
 
+//        int n = A.length;
+//        // 创建一个数组
+//        int [] A1 = new int[n];
+//        A1[0] = 1;
+//        for (int i = 1;i < n; i++) {
+//            A1[i] = A[i - 1] * A1[i - 1];
+//        }
+//        // 创建第二个数组
+//        int [] A2 = new int[n];
+//        A2[n-1] = 1;
+//        for (int i = n-2 ;i >= 0;i--){
+//            A2[i] = A2[i+1] * A[i+1];
+//        }
+//        // 第三次遍历
+//        for (int i = 0; i < n;i++){
+//            A[i] = A1[i] * A2[i];
+//        }
+//        return A;
+        // 用两个数组实现
         int n = A.length;
-        // 创建一个数组
-        int [] A1 = new int[n];
-        A1[0] = 1;
-        for (int i = 1;i < n; i++) {
-            A1[i] = A[i - 1] * A1[i - 1];
+        int B1[] = new int[n];
+        B1[0] = 1;
+        for (int i = 1; i < n; i++){
+            B1[i] = A[i - 1] * B1[i-1];
         }
-        // 创建第二个数组
-        int [] A2 = new int[n];
-        A2[n-1] = 1;
-        for (int i = n-2 ;i >= 0;i--){
-            A2[i] = A2[i+1] * A[i+1];
+        int B2[] = new int[n];
+        B2[n-1] = 1;
+        for (int i = n - 1 - 1; i >= 0; i--){
+            B2[i] = B2[i + 1] * A[i + 1 ];
         }
-        // 第三次遍历
-        for (int i = 0; i < n;i++){
-            A[i] = A1[i] * A2[i];
+
+        for (int i = 0; i < n; i++){
+            A[i] = B1[i] * B2[i];
         }
         return A;
 
