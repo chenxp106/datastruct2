@@ -1,4 +1,4 @@
-package cn.gdut.category.hash;
+package cn.gdut.category.hash.myhashmap;
 
 /**
  * @ClassName MyMap
