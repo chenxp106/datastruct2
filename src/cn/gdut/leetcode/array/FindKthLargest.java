@@ -11,36 +11,67 @@ public class FindKthLargest {
         return findKthLargest(nums, 0, nums.length - 1, k -1);
     }
 
-    private int findKthLargest(int [] nums, int low, int high, int k){
-        // 一次快拍
-        int index = partition(nums, low, high);
-        if (index == k){
-            return nums[index];
+    private int findKthLargest(int [] nums, int  low, int high, int k){
+        int index = partion(nums, low, high);
+
+        if (index > k){
+            return findKthLargest(nums, low, high - 1, k);
         }
-        else if (index > k){
-            return findKthLargest(nums, low, index - 1, k);
+        else if (index <k){
+            return findKthLargest(nums, low + 1, high, k);
         }
         else {
-            return findKthLargest(nums, index + 1, high, k);
+            return nums[index];
         }
-
     }
 
-    private int partition(int [] nums, int low, int high){
-        int temp = nums[low];
-        while (low < high){
-            while (low < high && temp >= nums[high]){
-                high--;
+    private int partion(int [] nums, int low, int high){
+        int i = low, j = high;
+        int temp = nums[i];
+        while (i < j){
+            while (i < j && temp >= nums[j]){
+                j--;
             }
-            nums[low] = nums[high];
-            while (low < high && temp < nums[low]){
-                low++;
+            nums[i] = nums[j];
+            while (i < j && temp <= nums[i]){
+                i++;
             }
-            nums[high] = nums[low];
+            nums[j] = nums[i];
         }
-        nums[low] = temp;
-        return low;
+        nums[i] = temp;
+        return i;
     }
+
+//    private int findKthLargest(int [] nums, int low, int high, int k){
+//        // 一次快拍
+//        int index = partition(nums, low, high);
+//        if (index == k){
+//            return nums[index];
+//        }
+//        else if (index > k){
+//            return findKthLargest(nums, low, index - 1, k);
+//        }
+//        else {
+//            return findKthLargest(nums, index + 1, high, k);
+//        }
+//
+//    }
+//
+//    private int partition(int [] nums, int low, int high){
+//        int temp = nums[low];
+//        while (low < high){
+//            while (low < high && temp >= nums[high]){
+//                high--;
+//            }
+//            nums[low] = nums[high];
+//            while (low < high && temp < nums[low]){
+//                low++;
+//            }
+//            nums[high] = nums[low];
+//        }
+//        nums[low] = temp;
+//        return low;
+//    }
 
 /*    private int findKthLargest(int [] nums, int low, int high, int k){
         int index = partition(nums, low, high);
