@@ -7,15 +7,14 @@ package cn.gdut.leetcode.array;
  */
 public class IsPalindrome {
     public boolean isPalindrome(String s){
-        if (s.length() == 0){
-            return false;
-        }
 
+        if (s == null || s.length() == 0){
+            return true;
+        }
+        int i = 0, j = s.length() - 1;
         String low = s.toLowerCase();
-        int i = 0;
-        int j = low.length() - 1;
         while (i < j){
-            if ( !Character.isLetterOrDigit(low.charAt(i))){
+            if (!Character.isLetterOrDigit(low.charAt(i))){
                 i++;
                 continue;
             }
@@ -26,7 +25,8 @@ public class IsPalindrome {
             if (low.charAt(i) != low.charAt(j)){
                 return false;
             }
-
+            i++;
+            j--;
         }
         return true;
     }
