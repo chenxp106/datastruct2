@@ -7,12 +7,23 @@ package cn.gdut.leetcode.array;
  */
 public class RemoveElement {
     public int removeElement(int [] nums, int val){
-        int k = 0;
+//        int k = 0;
+//        for (int i = 0; i < nums.length; i++){
+//            if (nums[i] != val){
+//                nums[k++] = nums[i];
+//            }
+//        }
+//        return k;
+        int cnt = 0;
         for (int i = 0; i < nums.length; i++){
-            if (nums[i] != val){
-                nums[k++] = nums[i];
+            if (nums[i] == val){
+                cnt++;
+
+            }
+            else {
+                nums[i-cnt] = nums[i];
             }
         }
-        return k;
+        return nums.length - cnt;
     }
 }

@@ -7,14 +7,24 @@ package cn.gdut.leetcode.array;
  */
 public class RemoveDuplicates {
     public int removeDuplicates(int [] nums){
-        int i = 0;
-        for (int j = 1; j < nums.length; j++){
-            if (nums[j] != nums[i]){
-                i++;
-                nums[i] = nums[j];
+//        int i = 0;
+//        for (int j = 1; j < nums.length; j++){
+//            if (nums[j] != nums[i]){
+//                i++;
+//                nums[i] = nums[j];
+//            }
+//        }
+//        return i + 1;
+        int cnt = 0;
+        for (int i = 1;i < nums.length; i++){
+            if (nums[i] == nums[i-1]){
+                cnt++;
+            }
+            else {
+                nums[i-cnt] = nums[i];
             }
         }
-        return i + 1;
+        return nums.length - cnt;
     }
 
     public static void main(String[] args) {
