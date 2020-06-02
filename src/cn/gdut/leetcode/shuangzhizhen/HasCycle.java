@@ -7,18 +7,32 @@ package cn.gdut.leetcode.shuangzhizhen;
  */
 public class HasCycle {
     public boolean hasCycle(ListNode head) {
+//        if (head == null){
+//            return false;
+//        }
+//
+//        ListNode l1 = head;
+//        ListNode l2 = head.next;
+//        while (l1 != null && l2 != null && l2.next != null){
+//            if (l1 == l2){
+//                return true;
+//            }
+//            l1 = l1.next;
+//            l2 = l2.next.next;
+//        }
+//        return false;
+        // 双指针
         if (head == null){
             return false;
         }
-
-        ListNode l1 = head;
-        ListNode l2 = head.next;
-        while (l1 != null && l2 != null && l2.next != null){
-            if (l1 == l2){
+        ListNode slow = head;
+        ListNode fast = head.next;
+        while (slow != null || fast != null && slow.next != fast){
+            if (slow == fast){
                 return true;
             }
-            l1 = l1.next;
-            l2 = l2.next.next;
+            slow = slow.next;
+            fast = fast.next.next;
         }
         return false;
 
