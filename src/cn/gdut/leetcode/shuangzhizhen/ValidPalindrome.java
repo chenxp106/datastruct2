@@ -7,9 +7,15 @@ package cn.gdut.leetcode.shuangzhizhen;
  */
 public class ValidPalindrome {
     public boolean validPalindrome(String s) {
+//        for (int i = 0, j = s.length() - 1; i < j; i++, j--){
+//            if (s.charAt(i) != s.charAt(j)){
+//                return isPalindrome(s, i+1, j) || isPalindrome(s, i, j - 1);
+//            }
+//        }
+//        return true;
         for (int i = 0, j = s.length() - 1; i < j; i++, j--){
-            if (s.charAt(i) != s.charAt(j)){
-                return isPalindrome(s, i+1, j) || isPalindrome(s, i, j - 1);
+            if (s.charAt(i)  != s.charAt(j)){
+                return isPalindrome(s, i+1, j) || isPalindrome(s, i, j-1);
             }
         }
         return true;
@@ -23,10 +29,18 @@ public class ValidPalindrome {
      * @return
      */
     private boolean isPalindrome(String s, int i, int j){
+//        while (i < j){
+//            if (s.charAt(i++) != s.charAt(j--)){
+//                return false;
+//            }
+//        }
+//        return true;
         while (i < j){
-            if (s.charAt(i++) != s.charAt(j--)){
+            if (s.charAt(i) != s.charAt(j)){
                 return false;
             }
+            i++;
+            j--;
         }
         return true;
     }
