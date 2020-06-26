@@ -1,7 +1,7 @@
 package cn.gdut.leetcode.stackandqueue;
 
 /**
- * @ClassName Singleton
+ * @ClassName Singleton01
  * @Desctiption 双重锁对象实现单例
  * @Date 2020/4/3 20:33
  */
