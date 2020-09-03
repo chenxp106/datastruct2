@@ -12,31 +12,37 @@ public class LetterCombinations {
     private static final String[] KEYS = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
     public List<String> letterCombinations(String digits) {
         // 定义返回结果
-        List<String> ret = new ArrayList<>();
-        // 判空
+        List<String> result = new ArrayList<>();
         if (digits == null || digits.length() == 0){
-            return ret;
+            return result;
         }
-
-        doCombination(new StringBuilder(), ret, digits);
-        return ret;
+        doCombination(new StringBuilder(), result, digits);
+        return result;
     }
 
+    /**
+     * 回溯
+     * @param prefix
+     * @param ret
+     * @param digits
+     */
     private void doCombination(StringBuilder prefix, List<String> ret, final String digits){
-        if(prefix.length() == digits.length()){
+
+        if (prefix.length() == digits.length()){
             ret.add(prefix.toString());
             return;
         }
-        // 取出当前的数字
-        int curDigits = digits.charAt(prefix.length()) - '0';
-        // 获取当前数字对应的字符串
-        String letters = KEYS[curDigits] ;
-        // 循环递归当前字符
-        for(char c : letters.toCharArray()) {
-            // 加入当前字符
+
+        // 获取当前按键的数字
+        int curDigist = digits.charAt(prefix.length()) - '0';
+        // 获取按键数字的字符
+        String key = KEYS[curDigist];
+        // 便利字符串
+        for (Character c : key.toCharArray()){
             prefix.append(c);
+            // 递归
             doCombination(prefix, ret, digits);
-            // 删除当前字符
+            // 删除最后一个字符，加入其它的字符
             prefix.deleteCharAt(prefix.length() - 1);
         }
     }

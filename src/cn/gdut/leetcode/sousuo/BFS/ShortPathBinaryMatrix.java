@@ -25,49 +25,45 @@ public class ShortPathBinaryMatrix {
         if (grid == null || grid.length == 0 || grid[0].length == 0){
             return 0;
         }
-        // 四个方向
+        // 八个方向
         int [][] dir = {{1, -1}, {1, 0}, {1, 1}, {0, -1}, {0, 1}, {-1, -1}, {-1, 0}, {-1, 1}};
-        // 计算长宽
         int m = grid.length;
         int n = grid[0].length;
-        // 定义队列,Pair装的是坐标
+        // 路径长度
+        int pathLenght = 0;
         Queue<Pair<Integer, Integer>> queue = new LinkedList<>();
         queue.add(new Pair<>(0,0));
-        // 长度
-        int pathLength = 0;
-        // 遍历队列
-        while( !queue.isEmpty()){
-
+        while (!queue.isEmpty()){
+            // 队列中的个数
             int size = queue.size();
-            pathLength++;
-            while(size-- > 0){
-                // 出一个元素
-                Pair<Integer,Integer> cur = queue.poll();
-                // 获取横纵坐标
-                int cr = cur.getKey(), cc = cur.getValue();
-                // 如果该坐标的值为1，说明不可达
-                if (grid[cr][cc] == 1){
+            pathLenght++;
+            while (size-- > 0){
+                Pair<Integer, Integer> poll = queue.poll();
+                // 获取坐标的位置
+                Integer i = poll.getKey();
+                Integer j = poll.getValue();
+                // 坐标为1,不可通行
+                if (grid[i][j]  == 1){
                     continue;
                 }
-                // 如果到达终点
-                if( cc == m -1 && cr == n - 1){
-                    return pathLength;
+                // 到达终点
+                if (i == m - 1 && j == n - 1){
+                    return pathLenght;
                 }
-                // 同时标记已访问
-                grid[cr][cc] = 1;
-                // 遍历八个方向
-                for(int [] d : dir) {
-                    int nr = cr + d[0];
-                    int nc = cc + d[1];
-                    // 如果越界，continue
-                    if ( nr < 0 || nr >= m || nc < 0|| nc >= n){
+                // 否则表示可以通行，同时标记访问
+                grid[i][j] = 1;
+                // 从8个方向出发
+                for (int [] d : dir){
+                    // 这里需要重新定义变量
+                    int ni = i + d[0];
+                    int nj = j + d[1];
+                    if (ni < 0 || nj < 0 || ni >= m || nj >= n){
                         continue;
                     }
-                    // 将当前节点加入队列中
-                    queue.add(new Pair(nr,nc));
+                    // 将节点加入到队列中
+                    queue.add(new Pair<>(ni, nj));
                 }
             }
-
         }
         return -1;
     }

@@ -11,13 +11,53 @@ import java.util.List;
  */
 public class Combine {
     public List<List<Integer>> combine(int n, int k){
-        List<List<Integer>> ret = new ArrayList<>();
+        /*List<List<Integer>> ret = new ArrayList<>();
         List<Integer> temp = new ArrayList<>();
         tracking(ret, temp, 1, k, n);
-        return ret;
+        return ret;*/
+        List<List<Integer>> res = new ArrayList<>();
+        List<Integer> temp = new ArrayList<>();
+        tracking(res, temp, 1, k, n);
+        return res;
     }
 
-    private void tracking(List<List<Integer>> ret, List<Integer> temp, int start, int k, int n){
+    /**
+     * 从start开始，选择k个数
+     * @param res
+     * @param temp
+     * @param start
+     * @param k
+     * @param n
+     */
+    private void tracking(List<List<Integer>> res, List<Integer> temp, int start, int k, int n){
+        if (k== 0){
+            res.add(new ArrayList<>(temp));
+            return;
+        }
+        for (int i = start; i <= n - k + 1; i++){
+            temp.add(i);
+            tracking(res, temp, i+1, k-1, n);
+            temp.remove(temp.size() - 1);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*private void tracking(List<List<Integer>> ret, List<Integer> temp, int start, int k, int n){
         if (k == 0){
             ret.add(new ArrayList<>(temp));
             return;
@@ -30,7 +70,7 @@ public class Combine {
             temp.remove(temp.size() - 1);
 
         }
-    }
+    }*/
 
     public static void main(String[] args) {
         Combine combine = new Combine();

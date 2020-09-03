@@ -10,32 +10,33 @@ import java.util.List;
  */
 public class Permute {
     public List<List<Integer>> permute(int [] nums){
-
-        List<List<Integer>> ret = new ArrayList<>();
+        // 全排列
+        List<List<Integer>> res = new ArrayList<>();
         List<Integer> temp = new ArrayList<>();
-        boolean [] visited = new boolean[nums.length];
-        tracking(ret, nums, temp, visited);
-        return ret;
+        int n = nums.length;
+        boolean [] visited = new boolean[n];
+        tracking(res, temp, nums, visited);
+        return res;
 
     }
 
-    private void tracking(List<List<Integer>> ret, int [] nums, List<Integer> temp, boolean [] visited){
-        // 如果长度相等，就添加上。并且新建temp数组。然后返回
-        if (temp.size() == nums.length){
-            ret.add(new ArrayList<>(temp));
-            return;
-        }
-        // 否则，继续遍历
+    private void tracking(List<List<Integer>> res, List<Integer> temp, int [] nums, boolean [] visited){
+        // 长度相等，讲temp加入到res中
+         if (temp.size() == nums.length){
+             res.add(new ArrayList<>(temp));
+             return;
+         }
+         // 遍历nums
         for (int i = 0; i < nums.length; i++){
-            if (visited[i]){
-                continue;
+            // 如果没有访问。加入temp中，同事标记访问
+            if ( !visited[i] ){
+                temp.add(nums[i]);
+                visited[i] = true;
+                tracking(res, temp, nums, visited);
+                // 将最后一个删除，同时标记未访问
+                temp.remove(temp.size() - 1);
+                visited[i] = false;
             }
-            visited[i] = true;
-            temp.add(nums[i]);
-            tracking(ret, nums, temp, visited);
-            // 移除一个，并设置未访问
-            temp.remove(temp.size() - 1);
-            visited[i] = false;
         }
     }
 }
