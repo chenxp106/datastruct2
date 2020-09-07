@@ -32,13 +32,28 @@ public class huawei2 {
             dp[0][j] = 0;
         }
 
-        for (int i = 1; i <= N; i++){
+        /*for (int i = 1; i <= N; i++){
             for (int j = 1; j <= K; j++){
                 if (j < weight[i-1]){
                     dp[i][j] = dp[i-1][j];
                 }
                 else {
                     dp[i][j] = Math.max(dp[i-1][j], dp[i-1][j-weight[i-1]] + values[i-1]);
+                }
+            }
+        }*/
+        // 遍历物品
+        for (int i = 1; i <= N; i++){
+            // 遍历总重量
+            for (int j = 1; j <= K; j++){
+                // 放不下当前物品
+                if (j < weight[i - 1]){
+                    dp[i][j] = dp[i-1][j];
+                }
+                // 放的下
+                else {
+                    // 可以选择不放或放
+                    dp[i][j] = Math.max(dp[i-1][j], dp[i - 1][j -weight[i-1]] + values[i-1]);
                 }
             }
         }
