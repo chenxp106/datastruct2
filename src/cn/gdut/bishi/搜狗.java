@@ -3,7 +3,7 @@ package cn.gdut.bishi;
 import java.util.HashSet;
 import java.util.Set;
 
-public class sougou3 {
+public class 搜狗 {
 
     public Set<String> set= new HashSet<>();
     public long getPasswordCount(String password){
@@ -48,7 +48,7 @@ public class sougou3 {
     }
 
     public static void main(String[] args) {
-        sougou3 sougou1 = new sougou3();
+        搜狗 sougou1 = new 搜狗();
         System.out.println(sougou1.getPasswordCount("3"));
     }
 
