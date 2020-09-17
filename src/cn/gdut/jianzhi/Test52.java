@@ -1,5 +1,8 @@
 package cn.gdut.jianzhi;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * @Desctiption 两个链表的第一个公共节点
  * 交替
@@ -22,9 +25,10 @@ public class Test52 {
         ListNode l1 = pHead1;
         ListNode l2 = pHead2;
         while (l1 != l2){
-            l1 = l1 == null ? pHead2 : l1.next;
-            l2 = l2 == null ? pHead1 : l2.next;
+            l1 = (l1 == null) ? pHead2 : l1.next;
+            l2 = (l2 == null) ? pHead1 : l2.next;
+
         }
-        return l2;
+        return l1;
     }
 }

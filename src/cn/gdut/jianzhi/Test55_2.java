@@ -6,39 +6,63 @@ package cn.gdut.jianzhi;
  **/
 public class Test55_2 {
 
-    /*public boolean IsBalanced_Solution(TreeNode root){
+
+    boolean isBalance = true;
+    public boolean isBalanced(TreeNode root) {
+
         if (root == null){
             return true;
         }
-        return check(root);
+        height(root);
+        return isBalance;
     }
 
-    private boolean check(TreeNode root){
-        if (root == null){
-            return true;
-        }
-        int left = deep(root.left);
-        int right = deep(root.right);
-        if (Math.abs(left - right) > 1){
-            return false;
-        }
-        else {
-            return check(root.left) && check(root.right);
-
-        }
-    }
-
-    private int deep(TreeNode root){
+    private int height(TreeNode root) {
         if (root == null){
             return 0;
         }
-        int left = deep(root.left);
-        int right = deep(root.right);
-        return Math.max(left,right) + 1;
-    }*/
+        int left = height(root.left);
+        int right = height(root.right);
+        if (Math.abs(left - right) > 1 || !isBalance){
+            isBalance = false;
+            return 0;
+        }
+        else {
+            return Math.max(height(root.left), height(root.right)) + 1;
+        }
+    }
 
 
-    private boolean isBalance = true;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*private boolean isBalance = true;
     public boolean IsBalanced_Solution(TreeNode root){
         if (root == null){
             return true;
@@ -60,6 +84,6 @@ public class Test55_2 {
         else {
             return Math.max(left, right) + 1;
         }
-    }
+    }*/
 
 }

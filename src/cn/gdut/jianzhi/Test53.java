@@ -1,15 +1,18 @@
 package cn.gdut.jianzhi;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * @Desctiption 数字在排序数组中出现的 次数
  * @Date 2019/12/4/004
  **/
 public class Test53 {
-    public int GetNumberofK(int [] array, int k){
+    public int GetNumberofK(int [] array, int target){
         // k起始位置
-        int left = findIndex(array, k);
+        int left = findIndex(array, target);
         // 终止位置
-        int right = findIndex(array, k+1);
+        int right = findIndex(array, target-1);
         return right - left;
     }
     /**
@@ -33,20 +36,7 @@ public class Test53 {
      *      返回l
      */
 
-/*    private int findIndex(int [] array, int k){
-        int l = 0;
-        int h = array.length-1;
-        while (l < h){
-            int mind = l + (h - l) / 2;
-            if (k > array[mind]){
-                l=mind+1;
-            }
-            else {
-                h = mind;
-            }
-        }
-        return l;
-    }*/
+
 
     /**
      * 用二分查找，找到第一个数
@@ -55,14 +45,14 @@ public class Test53 {
      * @return
      */
     private int findIndex(int [] array, int k){
-        int l = 0, h = array.length ;
-        while (l < h){
+        int l = 0, h = array.length - 1;
+        while (l <= k){
             int m = l + (h - l) / 2;
-            if (array[m] >= k){
-                h = m;
+            if (k >= array[m]){
+                l = m + 1;
             }
             else {
-                l = m + 1;
+                h = m - 1;
             }
         }
         return l;

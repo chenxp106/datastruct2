@@ -5,14 +5,13 @@ package cn.gdut.jianzhi;
  * @Date 2019/12/5/005
  **/
 public class Test55_1 {
-    public int TreeDepth(TreeNode root){
-        return deep(root);
-    }
-
-    private int deep(TreeNode p){
-        if ( p == null){
+    public int maxDepth(TreeNode root) {
+        if (root == null){
             return 0;
         }
-        return Math.max(deep(p.left), deep(p.right)) + 1;
+        int left = maxDepth(root.left);
+        int right = maxDepth(root.right);
+        return Math.max(left, right) + 1;
     }
+
 }

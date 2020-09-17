@@ -14,7 +14,6 @@ public class qushi2 {
         tracking(0, builder, s,s.length() - n );
 
         int x = Collections.min(list);
-        String y = String.valueOf(x);
 
         System.out.println(x);
 
