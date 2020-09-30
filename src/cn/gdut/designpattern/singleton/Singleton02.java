@@ -13,7 +13,7 @@ public class Singleton02 {
 
     private Singleton02() {}
 
-    // 只有调用这个对象的时候，才会去创建这个对象。达到乐延时加载的效果。
+    // 只有调用这个对象的时候，才会去创建这个对象。达到了延时加载的效果。
     // 需要加synchronized关键字。因为有多线程的情况
     public static synchronized Singleton02 getInstance (){
         if (instance == null){

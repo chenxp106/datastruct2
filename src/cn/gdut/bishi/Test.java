@@ -22,5 +22,20 @@ public class Test {
         int i5 = 1232412413;
         Integer i55 = new Integer(1232412413);
         System.out.println(i5  == i55);   // true
+
+        Integer i6 = 4;
+        Integer i66 = new Integer(4);
+        System.out.println(i6  == i66);
+
+
+        System.out.println("1+2+ee");
+
+    }
+
+    private void  get(int c) throws Exception{
+
+        if (c < 0){
+            throw new RuntimeException();
+        }
     }
 }
