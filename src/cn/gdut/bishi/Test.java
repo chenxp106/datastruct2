@@ -29,6 +29,11 @@ public class Test {
 
 
         System.out.println("1+2+ee");
+//        int [][] x = {{1,2}};
+//        int [2][] y= {1,2,3,4};
+//        int [][] z = new int[][2];
+//        int [2][3] u = new int[2][3];
+//        int [][] j = new int[3][];
 
     }
 
